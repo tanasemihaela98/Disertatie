@@ -53,6 +53,11 @@ if(nume===null)nume="";
           </a>
         </li>
         <li className="nav__item">
+          <a href="/gallery" className="nav__link">
+            Gallery
+          </a>
+        </li>
+        <li className="nav__item">
           <a href="auth" className="nav__link">
             Login
           </a>

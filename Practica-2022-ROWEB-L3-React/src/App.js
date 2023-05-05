@@ -9,15 +9,19 @@ import Categories from './Categories';
 import Products from './Products';
 import ChangePassword from './ChangePassword';
 import UpdateProfile from './UpdateProfile';
+import AboutArtist from './AboutArtist';
+import Gallery from './Gallery';
 
 
 function App() {
   return (
     <div>
-     {/* <Navbar/> */}
+     <Navbar/>
      <BrowserRouter>
       <Routes>
+        <Route path="/" element={<AboutArtist />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/verify-email-token" element={<VerifyEmailToken />} />
