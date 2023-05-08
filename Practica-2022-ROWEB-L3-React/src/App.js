@@ -11,6 +11,8 @@ import ChangePassword from './ChangePassword';
 import UpdateProfile from './UpdateProfile';
 import AboutArtist from './AboutArtist';
 import Gallery from './Gallery';
+import Museums from './Museums';
+import Contact from './Contact';
 
 
 function App() {
@@ -22,6 +24,9 @@ function App() {
         <Route path="/" element={<AboutArtist />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/museums" element={<Museums />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/museums" element={<Museums />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/verify-email-token" element={<VerifyEmailToken />} />

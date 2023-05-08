@@ -76,15 +76,15 @@ class ProductController extends ApiController
     public function add(Request $request): JsonResponse
     {
         try {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|max:100',
-                'category_id' => 'required|exists:categories,id',
-                'description' => 'required',
-                'quantity' => 'required|integer|numeric|min:0',
-                'price' => 'required|numeric|min:0',
-                'image' => 'nullable|image',
-                'status' => 'nullable|in:' . Product::INACTIVE . ',' . Product::ACTIVE
-            ]);
+            // $validator = Validator::make($request->all(), [
+            //     'name' => 'required|max:100',
+            //     'category_id' => 'required|exists:categories,id',
+            //     'description' => 'required',
+            //     'quantity' => 'required|integer|numeric|min:0',
+            //     'price' => 'required|numeric|min:0',
+            //     'image' => 'nullable|image',
+            //     'status' => 'nullable|in:' . Product::INACTIVE . ',' . Product::ACTIVE
+            // ]);
 
             if ($validator->fails()) {
                 return $this->sendError('Bad request!', $validator->messages()->toArray());

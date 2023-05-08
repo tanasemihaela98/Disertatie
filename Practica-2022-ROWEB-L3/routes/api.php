@@ -47,3 +47,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/deleteproducts/{id}', [ProductController::class, 'delete']);
     Route::get('/get-product/{id}', [ProductController::class, 'getProduct']);
 });
+
+
+Route::post('/paint/create', [PaintController::class, 'create']);
+Route::delete('/paint/delete/{id}', [PaintController::class, 'create']);
+

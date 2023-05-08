@@ -63,6 +63,11 @@ if(nume===null)nume="";
           </a>
         </li>
         <li className="nav__item">
+          <a href="contact" className="nav__link">
+            Contact
+          </a>
+        </li>
+        <li className="nav__item">
           <a href="update-profile" className="nav__link">
             
           {nume=="" && <a>Guest</a>}
