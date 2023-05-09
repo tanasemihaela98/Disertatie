@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaintController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 
-Route::post('/paint/create', [PaintController::class, 'create']);
-Route::delete('/paint/delete/{id}', [PaintController::class, 'create']);
+Route::post('/paint/create', [PaintController::class, 'store']);
+Route::delete('/paint/delete/{id}', [PaintController::class, 'destroy']);
+Route::get('/paint/findall', [PaintController::class, 'index']);
+Route::get('/paint/{id}', [PaintController::class, 'findPaint']);
+Route::get('/paint/{id}/buy', [PaintController::class, 'buy']);
 
