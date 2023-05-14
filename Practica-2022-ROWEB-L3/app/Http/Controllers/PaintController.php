@@ -6,7 +6,7 @@ use App\Models\Paint;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -69,11 +69,17 @@ class PaintController extends ApiController
         return $this->sendResponse($paint->toArray(), Response::HTTP_OK);
     }
 
-    public function buy($id)
+    public function buy($id, Request $request)
     {
-        $paint = Paint::find($id);
+
         $user = Auth::user();
-        dd($user);
+
+        $paint = Paint::find($id);
+        if($paint->bid > 0) {
+            $paint->bid = $request->price;
+        }
+        $paint->ownned = $user->email;
+        $paint->save();
 
         return $this->sendResponse($paint->toArray(), Response::HTTP_OK);
     }

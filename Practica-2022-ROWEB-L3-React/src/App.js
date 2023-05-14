@@ -13,6 +13,7 @@ import AboutArtist from './AboutArtist';
 import Gallery from './Gallery';
 import Museums from './Museums';
 import Contact from './Contact';
+import Paint from './Paint';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/museums" element={<Museums />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/museums" element={<Museums />} />
+        <Route path="/paint/:id" element={<Paint />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/verify-email-token" element={<VerifyEmailToken />} />
