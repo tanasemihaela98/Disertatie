@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->index('user_id');
+            $table->integer('user_id');
             $table->integer('persons');
             $table->string('location');
             $table->date('schedule');

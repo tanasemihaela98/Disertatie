@@ -6,7 +6,6 @@ use App\Models\PasswordReset;
 use App\Models\User;
 use App\Notifications\ForgotPasswordEmail;
 use App\Notifications\VerifyEmail;
-use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -18,16 +17,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Exception;
 
-/**
- *
- */
 class UserController extends ApiController
 {
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function login(Request $request): JsonResponse
     {
         try {
@@ -73,16 +66,13 @@ class UserController extends ApiController
         }
     }
 
-    /**
-     *
-     */
     public function register(Request $request): JsonResponse
     {
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required|confirmed'
+                'password' => 'required'
                 
             ]);
 
@@ -109,10 +99,6 @@ class UserController extends ApiController
         }
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function verifyEmail(Request $request): JsonResponse
     {
         try {
@@ -147,10 +133,6 @@ class UserController extends ApiController
         }
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function resendVerifyEmail(Request $request): JsonResponse
     {
         try {
@@ -181,10 +163,6 @@ class UserController extends ApiController
         }
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function forgotPassword(Request $request): JsonResponse
     {
         try {
@@ -273,10 +251,6 @@ class UserController extends ApiController
         }
     }
 
-    /**
-     * @param Request $request
-     * @return JsonResponse
-     */
     public function updateProfile(Request $request): JsonResponse
     {
         try {
@@ -293,14 +267,18 @@ class UserController extends ApiController
                     return $this->sendError('Bad request!', $validator->messages()->toArray());
                 }
     
-                $user->name = $request->get('name', $user->name);
-    
+                $user->name = $request->get('name');
+                $user->firstname = $request->get('firstname');
+                $user->lastname = $request->get('lastname');
+                $user->profile = $request->get('profile');
+                $user->about = $request->get('about');
+
                 if ($request->has('email') && $request->get('email') !== $user->email) {
                     $user->email = $request->get('email');
                     $user->email_verified_at = null;
                     $user->verify_token = Str::random(10);
     
-                    $user->notify(new VerifyEmail($user->verify_token));
+                    //$user->notify(new VerifyEmail($user->verify_token));
                 }
     
                 if ($request->has('password')) {
@@ -316,7 +294,6 @@ class UserController extends ApiController
                 return $this->sendResponse($user->toArray());
             } catch (Exception $exception) {
                 Log::error($exception);
-    
                 return $this->sendError('Something went wrong, please contact administrator!', [], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         } catch (\Throwable $exception) {

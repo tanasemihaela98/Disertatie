@@ -39,7 +39,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('categories-tree', [CategoryController::class, 'tree']);
 
     Route::get('/product/{id}', [ProductController::class, 'get']);
-    
     Route::get('/products', [ProductController::class, 'getAll']);
     Route::get('/products/{categoryId}', [ProductController::class, 'getAllProductsForCategory']);
     Route::post('/createproducts', [ProductController::class, 'add']);
@@ -59,33 +58,19 @@ Route::get('/paint/findall', [PaintController::class, 'index']);
 Route::get('/paint/{id}', [PaintController::class, 'findPaint']);
 
 
-// Get all books
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
-// Show the form for creating a new book
 Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
-// Store a newly created book in the database
 Route::post('/books', [BookController::class, 'store'])->name('books.store');
-// Display the specified book
 Route::get('/books/{book}', [BookController::class, 'show'])->name('books.show');
-// Show the form for editing the specified book
 Route::get('/books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
-// Update the specified book in the database
 Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
-// Remove the specified book from the database
 Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.destroy');
 
 
-// Get all ticket
 Route::get('/ticket', [TicketController::class, 'index'])->name('ticket.index');
-// Show the form for creating a new book
 Route::get('/ticket/create', [TicketController::class, 'create'])->name('ticket.create');
-// Store a newly created book in the database
 Route::post('/ticket', [TicketController::class, 'store'])->name('ticket.store');
-// Display the specified book
 Route::get('/ticket/{ticket}', [TicketController::class, 'show'])->name('ticket.show');
-// Show the form for editing the specified book
 Route::get('/ticket/{ticket}/edit', [TicketController::class, 'edit'])->name('ticket.edit');
-// Update the specified book in the database
 Route::put('/ticket/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
-// Remove the specified book from the database
 Route::delete('/ticket/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
