@@ -1,0 +1,41 @@
+.paint {
+    height: auto;
+    float: left;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+
+}
+
+img {
+    width: auto;
+    height: 200px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.author {
+
+}
+
+.price {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.buy {
+    background-color: blue;
+    color: whitesmoke;
+    cursor: pointer;
+    border: 1px solid whitesmoke;
+}
+
+.buy:hover {
+    color: blue;
+    background-color: whitesmoke;
+    border: 1px solid blue;
+}
