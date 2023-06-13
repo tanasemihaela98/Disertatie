@@ -13,27 +13,27 @@ export default function () {
         <div class="paintings-container">
             <div class="paintings-list">
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 1"/>
+                    <img src="../self-portrait.jpg" alt="Painting 1"/>
                 </div>
 
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 2"/>
+                    <img src="../self-portrait.jpg" alt="Painting 2"/>
                 </div>
 
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 3"/>
+                    <img src="../self-portrait.jpg" alt="Painting 3"/>
                 </div>
 
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 3"/>
+                    <img src="../self-portrait.jpg" alt="Painting 3"/>
                 </div>
 
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 3"/>
+                    <img src="../self-portrait.jpg" alt="Painting 3"/>
                 </div>
 
                 <div class="painting-card">
-                    <img src="/self-portrait.jpg" alt="Painting 3"/>
+                    <img src="../self-portrait.jpg" alt="Painting 3"/>
                 </div>
 
             </div>

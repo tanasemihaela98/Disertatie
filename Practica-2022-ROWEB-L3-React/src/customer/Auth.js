@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import {useStateContext} from "./ContextProvider";
+import {useStateContext} from "../ContextProvider";
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("login")
