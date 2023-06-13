@@ -1,37 +1,20 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Button from 'react-bootstrap/Button';
+import './Contact.css';
 
 export default function () {
 
     return <>
-        <Container fluid="md">
-            <Row>
-                <Col md={12}>
-                    <h1>Contact us</h1>
-                    <Form>
-                        <InputGroup className="mb-3">
-                            <Form.Control
-                            placeholder="Write your email"
-                            aria-label="Recipient's username"
-                            aria-describedby="basic-addon2"/>
-                            <InputGroup.Text id="basic-addon2">@example.com</InputGroup.Text>
-                        </InputGroup>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form action="#" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
 
-                        <InputGroup>
-                            <InputGroup.Text>Your message</InputGroup.Text>
-                            <Form.Control as="textarea" aria-label="With textarea" />
-                        </InputGroup>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     </>
 
 }

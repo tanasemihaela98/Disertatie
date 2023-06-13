@@ -14,33 +14,34 @@ function Navbar() {
     } else setIcon("nav__toggler");
   };
 
-  let token = JSON.parse(window.localStorage.getItem("user-info") );
+  let token = JSON.parse(window.localStorage.getItem("user-info"));
 
   //logout
-  async function logout(e)
-  {
-     e.preventDefault();
-     //alert(password);
-     let result=await fetch("http://127.0.0.1:8081/api/logout",{
-         method:"POST",
-         headers:{
-                  "Accept":"application/json",
-                  "Content-Type":"application/json",
-                  "Authorization": "Bearer " + token.data.token
-                 },
-                 
-     })
-    if(localStorage.getItem('user-info')){localStorage.removeItem("user-info");alert('Logged out');window.location.reload();}
-       else alert('Error at logout');      
+  async function logout(e) {
+    e.preventDefault();
+    if (localStorage.getItem('user-info')) {
+      localStorage.removeItem("user-info"); alert('Logged out'); window.location.reload();
+    }
+    else alert('Error at logout');
+    //alert(password);
+    let result = await fetch("http://127.0.0.1:8081/api/logout", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token.data.token
+      },
+
+    })
   }
   //logout
 
 
-let nume = JSON.parse(window.localStorage.getItem("user-info") );
-console.log('localstore',JSON.parse(window.localStorage.getItem("user-info")));
-//console.log(nume);
-if(nume===null)nume="";
-  
+  let nume = JSON.parse(window.localStorage.getItem("user-info"));
+  console.log('localstore', JSON.parse(window.localStorage.getItem("user-info")));
+  //console.log(nume);
+  if (nume === null) nume = "";
+
   return (
     <nav className="nav">
       <a href="/" className="nav__brand">
@@ -58,28 +59,41 @@ if(nume===null)nume="";
           </a>
         </li>
         <li className="nav__item">
-          <a href="auth" className="nav__link">
-            Login
-          </a>
-        </li>
-        <li className="nav__item">
           <a href="contact" className="nav__link">
             Contact
           </a>
         </li>
+        {
+          nume != null && nume.data && nume.data.user && 
+          <li className="nav__item">
+            <a href="cart" className="nav__link">
+              My cart
+            </a>
+          </li>
+        }
         <li className="nav__item">
           <a href="update-profile" className="nav__link">
-            
-          {nume=="" && <a>Guest</a>}
-          {nume!=="" && <span>{nume.data.user.name}</span>}
+            {nume != null && nume.data && nume.data.user && <span>{nume.data.user.name}</span>}
           </a>
         </li>
-         <li className="nav__item">
-          <a href="#" className="nav__link" onClick={logout}>
-            Logout
-          </a>
-        </li>
-       </ul>
+        {
+          nume.data == null &&
+          <li className="nav__item">
+            <a href="auth" className="nav__link">
+              Login
+            </a>
+          </li>
+        }
+        {
+          nume !== null && nume.data && nume.data.user &&
+          <li className="nav__item">
+            <a href="#" className="nav__link" onClick={logout}>
+              Logout
+            </a>
+          </li>
+        }
+
+      </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
         <div className="line2"></div>

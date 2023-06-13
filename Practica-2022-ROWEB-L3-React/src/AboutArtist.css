@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    background-image: url('../public/self-portrait.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  .paintings-container {
+    width: 100%;
+    overflow-x: scroll;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  .paintings-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .painting-card {
+    width: 200px;
+    margin-right: 20px;
+  }
+  
+  .painting-card img {
+    width: 100%;
+    height: auto;
+  }
+  

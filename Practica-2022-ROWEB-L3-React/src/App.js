@@ -14,6 +14,8 @@ import Gallery from './Gallery';
 import Museums from './Museums';
 import Contact from './Contact';
 import Paint from './Paint';
+import Cart from './Cart';
+import Checkout from './Checkout';
 
 
 function App() {
@@ -25,7 +27,9 @@ function App() {
         <Route path="/" element={<AboutArtist />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/museums" element={<Museums />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/paint/:id" element={<Paint />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
