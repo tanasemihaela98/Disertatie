@@ -1,4 +1,4 @@
-.container {
+.contact {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -38,14 +38,14 @@ textarea {
 
 input[type="email"]:focus,
 textarea:focus {
-  border: 1px solid #4CAF50;
+  border: 1px solid #1900ff;
 }
 
 input[type="submit"] {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  background-color: #4CAF50;
+  background-color: #6252f7;
   color: white;
   border: none;
   border-radius: 4px;
@@ -56,7 +56,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #0400f5;
 }
 
 input[type="submit"]:focus {
@@ -64,7 +64,7 @@ input[type="submit"]:focus {
 }
 
 input[type="submit"]:active {
-  background-color: #3e894d;
+  background-color: #1900ff;
 }
 
 textarea {

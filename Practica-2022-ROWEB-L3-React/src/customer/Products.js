@@ -78,8 +78,7 @@ function Products()
         })
         .catch(err => {
             alert(err);
-        })
-             
+        })       
   };
 
   const editProducts = async () => {

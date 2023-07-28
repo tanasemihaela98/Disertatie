@@ -16,30 +16,40 @@ import Contact from './customer/Contact';
 import Paint from './customer/Paint';
 import Cart from './customer/Cart';
 import Checkout from './customer/Checkout';
+import Payment from './customer/Payment';
+import AdminPaints from './admin/paints';
+import Navigation from './admin/components/navigation';
+import AdminOrders from './admin/orders';
+import AdminContacts from './admin/contacts';
 
 
 function App() {
   return (
     <div>
-     <Navbar/>
-     <BrowserRouter>
+     {/* <Navbar/> */}
+      <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AboutArtist />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/museums" element={<Museums />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/paint/:id" element={<Paint />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/change-password" element={<ChangePassword />} />
-        <Route path="/verify-email-token" element={<VerifyEmailToken />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/update-profile" element={<UpdateProfile />} />
+        <Route path="/" element={<><Navbar/><AboutArtist /></>} />
+        <Route path="/auth" element={<><Navbar/><Auth /></>} />
+        <Route path="/gallery" element={<><Navbar/><Gallery /></>} />
+        <Route path="/cart" element={<><Navbar/><Cart /></>} />
+        <Route path="/museums" element={<><Navbar/><Museums /></>} />
+        <Route path="/checkout" element={<><Navbar/><Checkout /></>} />
+        <Route path="/payment" element={<><Navbar/><Payment /></>} />
+        <Route path="/contact" element={<><Navbar/><Contact /></>} />
+        <Route path="/paint/:id" element={<><Navbar/><Paint /></>} />
+        <Route path="/forgot-password" element={<><Navbar/><ForgotPassword /></>} />
+        <Route path="/change-password" element={<><Navbar/><ChangePassword /></>} />
+        <Route path="/verify-email-token" element={<><Navbar/><VerifyEmailToken /></>} />
+        <Route path="/categories" element={<><Navbar/><Categories /></>} />
+        <Route path="/products" element={<><Navbar/><Products /></>} />
+        <Route path="/update-profile/" element={<><Navbar/><UpdateProfile /></>} />
+        <Route path="/admin/paints" element={ <><Navigation/><AdminPaints/></> } />
+        <Route path="/admin/orders" element={ <><Navigation/><AdminOrders/></> } />
+        <Route path="/admin/contacts" element={ <><Navigation/><AdminContacts/></> } />
+
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
     </div>
   )
 }

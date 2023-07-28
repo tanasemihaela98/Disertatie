@@ -22,6 +22,9 @@ return new class extends Migration {
             $table->string('lastname')->nullable();
             $table->longText('about')->nullable();
             $table->string('profile')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('adress')->nullable();
+            $table->string('city')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

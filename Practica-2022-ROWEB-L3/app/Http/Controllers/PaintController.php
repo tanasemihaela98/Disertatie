@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class PaintController extends ApiController
 {
@@ -21,39 +22,52 @@ class PaintController extends ApiController
         return $this->sendResponse($paints->toArray(), Response::HTTP_OK);
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request): JsonResponse
     {
         $paint = new Paint();
         $paint->name = $request->get('name');
         $paint->author = $request->get('author');
         $paint->price = $request->get('price');
-        $paint->bid = $request->get('bid');
-        $paint->ownned = $request->get('ownned');
-        $paint->painted_at = $request->get('painted_at');
-        $paint->description = $request->get('description');
+        $paint->bid = 0;
+        $paint->ownned = "asd"; 
+        $paint->painted_at = Carbon::now();
+        $paint->description = "aas";
+
+        $originalFileName = $request->file('image')->getClientOriginalName();
+        $fileName = uniqid() . '_' . $originalFileName;
+        $path = $request->file('image')->storeAs('public', $fileName);
+        // $url = asset('storage/' . $path);
+        $paint->image = $fileName;
+
         $paint->save();
 
         return $this->sendResponse($paint->toArray(), Response::HTTP_CREATED);
     }
 
-    public function show(Paint $paint)
+    public function update(Request $request, $id): JsonResponse
     {
-        //
-    }
-
-    public function edit(Paint $paint)
-    {
-        //
-    }
-
-    public function update(Request $request, Paint $paint)
-    {
-        //
+        $paint = Paint::findOrFail($id);
+    
+        $paint->name = $request->get('name');
+        $paint->author = $request->get('author');
+        $paint->price = $request->get('price');
+        // $paint->bid = $request->get('bid');
+        // $paint->ownned = $request->get('ownned');
+        // $paint->painted_at = Carbon::now();
+        // $paint->description = $request->get('description');
+    
+        if ($request->hasFile('image')) {
+            // Delete the previous image if needed
+            Storage::delete('public/' . $paint->image);
+    
+            $originalFileName = $request->file('image')->getClientOriginalName();
+            $fileName = uniqid() . '_' . $originalFileName;
+            $path = $request->file('image')->storeAs('public', $fileName);
+            $paint->image = $fileName;
+        }
+    
+        $paint->save();
+        return $this->sendResponse($request->toArray(), Response::HTTP_OK);
     }
 
     public function destroy($id)

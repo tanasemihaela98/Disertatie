@@ -251,27 +251,37 @@ class UserController extends ApiController
         }
     }
 
-    public function updateProfile(Request $request): JsonResponse
+    public function updateProfile(Request $request, User $user): JsonResponse
     {
         try {
             try {
                 $user = Auth::user();
     
-                $validator = Validator::make($request->all(), [
-                    'name' => 'nullable',
-                    'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($user->id)],
-                    'password' => 'nullable'
-                ]);
+                // $validator = Validator::make($request->all(), [
+                //     'name' => 'nullable',
+                //     'email' => ['nullable', 'email', Rule::unique('users', 'email')->ignore($user->id)],
+                //     'password' => 'nullable'
+                // ]);
     
-                if ($validator->fails()) {
-                    return $this->sendError('Bad request!', $validator->messages()->toArray());
+                // if ($validator->fails()) {
+                //     return $this->sendError('Bad request!', $validator->messages()->toArray());
+                // }
+    
+                if($request->has('name')) {
+                    $user->name = $request->get('name');
+                    $user->firstname = $request->get('firstname');
+                    $user->lastname = $request->get('lastname');
+                    $user->profile = $request->get('profile');
+                    $user->about = $request->get('about');
                 }
-    
-                $user->name = $request->get('name');
-                $user->firstname = $request->get('firstname');
-                $user->lastname = $request->get('lastname');
-                $user->profile = $request->get('profile');
-                $user->about = $request->get('about');
+
+
+                if($request->has('city')) {
+                    $user->city = $request->get('city');
+                    $user->adress = $request->get('address');
+                    $user->phone_number = $request->get('phone');
+                    // $user->additionalEmail = $request->get('additionalEmail');
+                }
 
                 if ($request->has('email') && $request->get('email') !== $user->email) {
                     $user->email = $request->get('email');
@@ -285,11 +295,11 @@ class UserController extends ApiController
                     $user->password = Hash::make($request->get('password'));
                 }
     
-                DB::beginTransaction();
+                // DB::beginTransaction();
 
                 $user->save();
 
-                DB::commit();
+                // DB::commit();
     
                 return $this->sendResponse($user->toArray());
             } catch (Exception $exception) {

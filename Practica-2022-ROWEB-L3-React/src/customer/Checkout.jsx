@@ -1,6 +1,41 @@
 import './Checkout.css';
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export default function () {
+
+    const [additionalEmail, setAdditionalEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
+    let token = JSON.parse(window.localStorage.getItem("user-info") );
+        const navigate = useNavigate();
+
+    const redirect = () => {
+        navigate("/payment");
+    }
+
+    const headers =  {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token.data.token
+      };
+
+    const submitPost = (e) => {
+        const data = {
+            "city":city,
+            "phone":phone,
+            "additionalEmail":additionalEmail,
+            "address":address,
+        }
+        
+        console.log(token);
+        const response = axios.post('http://127.0.0.1:8081/api/user/'+token.data.user.id, data, { headers: headers }).then(
+            response => {
+                redirect();
+            });
+    }
+
 
     return <>
         <div class="checkout-container">
@@ -9,32 +44,24 @@ export default function () {
             </div>
             <div class="checkout-form">
                 <div class="form-group">
-                    <label for="card-number">Card Number</label>
-                    <input type="text" id="card-number" placeholder="Enter your card number"/>
+                    <label for="card-number">Email</label>
+                    <input type="text" placeholder="Enter your email" value={additionalEmail} onChange={(e) => setAdditionalEmail(e.target.value)}/>
                 </div>
                 <div class="form-group">
-                    <label for="expiry-date">Expiry Date</label>
-                    <input type="text" id="expiry-date" placeholder="MM/YY"/>
+                    <label for="expiry-date">Phone</label>
+                    <input type="text" placeholder="Phone number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
                 </div>
                 <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" placeholder="Enter CVV"/>
-                </div>
-                <div class="form-group">
-                    <label for="card-holder">Card Holder Name</label>
-                    <input type="text" id="card-holder" placeholder="Enter card holder name"/>
+                    <label for="cvv">City</label>
+                    <input type="text"  placeholder="Enter City" value={city} onChange={(e) => setCity(e.target.value)}/>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <textarea id="address" placeholder="Enter your address"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email address"/>
+                    <textarea placeholder="Enter your address" value={address} onChange={(e) => setAddress(e.target.value)}></textarea>
                 </div>
             </div>
             <div class="checkout-footer">
-                <button class="checkout-btn">Place Order</button>
+                <button class="checkout-btn" onClick={(e) => submitPost(e)}>Place Order</button>
             </div>
         </div>
     </>

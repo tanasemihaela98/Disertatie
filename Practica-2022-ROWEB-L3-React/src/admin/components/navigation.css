@@ -1,0 +1,37 @@
+.navigation {
+    height: 100%;
+    min-width: 135px;
+    float: left;
+
+}
+
+.navigation ul {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+}
+
+.navigation ul li {
+    list-style-type: none;
+    margin-left: 0px;
+    width: 75%;
+    padding-top: 10px;
+    padding-left: 10px;
+    color: white;
+    margin-top: 10px;
+    color: black;
+    border-radius: 0px 50px 50px 0px;
+}
+
+.navigation ul li:hover {
+    font-weight: bold;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+}
+
+.navigation ul li a {
+    text-decoration: none;
+    color: black;
+}

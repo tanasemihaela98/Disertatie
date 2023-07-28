@@ -4,6 +4,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaintController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +27,11 @@ Route::post('/resend-verify-email', [UserController::class, 'resendVerifyEmail']
 Route::post('/forgot-password', [UserController::class, 'forgotPassword']);
 Route::post('/change-password', [UserController::class, 'changePassword']);
 
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user/{id}', [UserController::class, 'getUser']);
-    Route::post('/user', [UserController::class, 'updateProfile']);
-    
+    Route::post('/user/{user}', [UserController::class, 'updateProfile']);
+
     Route::post('/logout', [UserController::class, 'logout']);
 
     Route::get('/categories', [CategoryController::class, 'getAll']);
@@ -48,11 +51,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/get-product/{id}', [ProductController::class, 'getProduct']);
 
     Route::post('/paint/{id}/buy', [PaintController::class, 'buy']);
-
 });
 
 
 Route::post('/paint/create', [PaintController::class, 'store']);
+Route::post('/paint/update/{id}', [PaintController::class, 'update']);
 Route::delete('/paint/delete/{id}', [PaintController::class, 'destroy']);
 Route::get('/paint/findall', [PaintController::class, 'index']);
 Route::get('/paint/{id}', [PaintController::class, 'findPaint']);
@@ -74,3 +77,17 @@ Route::get('/ticket/{ticket}', [TicketController::class, 'show'])->name('ticket.
 Route::get('/ticket/{ticket}/edit', [TicketController::class, 'edit'])->name('ticket.edit');
 Route::put('/ticket/{ticket}', [TicketController::class, 'update'])->name('ticket.update');
 Route::delete('/ticket/{ticket}', [TicketController::class, 'destroy'])->name('ticket.destroy');
+
+
+Route::get('/cart/orders', [CartController::class, 'orders']);
+Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
+Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
+Route::put('/carts/{user}', [CartController::class, 'update'])->name('carts.update');
+Route::put('/cart/deliver/{cart}', [CartController::class, 'deliver'])->name('carts.deliver');
+Route::put('/cart/{cart}', [CartController::class, 'size'])->name('carts.size');
+Route::delete('/carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
+
+Route::get('/contacts', [ContactController::class, 'findAllContacts'])->name('findAllContacts');
+Route::delete('/contact/{id}', [ContactController::class, 'deleteContact'])->name('deleteContact');
+Route::post('/contact', [ContactController::class, 'createContact'])->name('createContact');
+Route::put('/contact/{id}', [ContactController::class, 'updateContact'])->name('updateContact');
