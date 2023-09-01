@@ -7,30 +7,16 @@ const Navigation = () => {
       <div className='navigation'>
           <ul>
             <li>
-                Statistics 
-                {/* <FcAreaChart/> */}
+                <a href='/admin/statistics'> Statistics </a>
             </li>
             <li>
-                <a href='/admin/paints'>
-                Products 
-                {/* <FcTemplate/> */}
-                </a>
+                <a href='/admin/paints'> Products </a>
             </li>
             <li>
-                <a href='/admin/orders'>
-                Orders 
-                {/* <FcRules/> */} 
-                </a>
+                <a href='/admin/orders'> Orders </a>
             </li>
             <li>
-                <a href='/admin/contacts'>
-                Contacts 
-                {/* <FcManager/> */}
-                </a>
-            </li>
-            <li>
-                Other 
-                {/* <FcSms/> */}
+                <a href='/admin/contacts'> Contacts </a>
             </li>
           </ul>
       </div>

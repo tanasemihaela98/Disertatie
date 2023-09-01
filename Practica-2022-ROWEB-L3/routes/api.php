@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaintController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,3 +92,5 @@ Route::get('/contacts', [ContactController::class, 'findAllContacts'])->name('fi
 Route::delete('/contact/{id}', [ContactController::class, 'deleteContact'])->name('deleteContact');
 Route::post('/contact', [ContactController::class, 'createContact'])->name('createContact');
 Route::put('/contact/{id}', [ContactController::class, 'updateContact'])->name('updateContact');
+
+Route::get('/dashboard/stat', [DashboardController::class, 'statistics'])->name('statistics');

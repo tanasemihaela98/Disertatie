@@ -1,0 +1,51 @@
+  .statistics header {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .statistics main {
+    padding: 20px;
+  }
+  
+  .statistics .widget-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .statistics .widget {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 23%;
+    text-align: center;
+  }
+  
+  .statistics .widget-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .statistics .widget-subtitle {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  .statistics .widget-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .statistics .chart-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .statistics .chart-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 23%;
+    text-align: center;
+  }
+  

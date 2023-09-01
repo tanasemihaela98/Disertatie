@@ -21,6 +21,7 @@ import AdminPaints from './admin/paints';
 import Navigation from './admin/components/navigation';
 import AdminOrders from './admin/orders';
 import AdminContacts from './admin/contacts';
+import AdminStatistics from './admin/dashboard';
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
         <Route path="/admin/paints" element={ <><Navigation/><AdminPaints/></> } />
         <Route path="/admin/orders" element={ <><Navigation/><AdminOrders/></> } />
         <Route path="/admin/contacts" element={ <><Navigation/><AdminContacts/></> } />
+        <Route path="/admin/statistics" element={ <><Navigation/><AdminStatistics/></> } />
+
 
       </Routes>
       </BrowserRouter>
