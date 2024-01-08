@@ -11,7 +11,7 @@ export default function () {
     const getCart = async () => {
         const response = await axios.get('http://127.0.0.1:8081/api/carts').then(
             response => {
-                console.log(response.data.data);
+                console.log(response.data.data.data);
                 setProducts(response.data.data);
             });
 

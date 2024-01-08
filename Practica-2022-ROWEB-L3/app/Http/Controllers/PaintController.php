@@ -97,4 +97,8 @@ class PaintController extends ApiController
 
         return $this->sendResponse($paint->toArray(), Response::HTTP_OK);
     }
+
+    public function firstEightPicture() {
+        
+    }
 }

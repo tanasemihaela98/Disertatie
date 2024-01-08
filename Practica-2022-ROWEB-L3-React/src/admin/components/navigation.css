@@ -1,8 +1,8 @@
 .navigation {
     height: 100%;
-    min-width: 135px;
+    min-width: 165px;
     float: left;
-
+    font-size: 18px;
 }
 
 .navigation ul {
@@ -20,18 +20,18 @@
     padding-left: 10px;
     color: white;
     margin-top: 10px;
-    color: black;
     border-radius: 0px 50px 50px 0px;
-}
-
-.navigation ul li:hover {
     font-weight: bold;
     cursor: pointer;
     background-color: blue;
-    color: white;
+    transition: width 1s;
+}
+
+.navigation ul li:hover {
+    width: 100%;
 }
 
 .navigation ul li a {
     text-decoration: none;
-    color: black;
+    color: white;
 }

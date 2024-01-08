@@ -34,7 +34,7 @@ export default function Gallery() {
     return <>
         {data.map((paint, index) => (
             <div className='paint'>
-                <img src='/self-portrait.jpg' width="300px" />
+                <img src={'http://localhost:8080/Disertatie/Practica-2022-ROWEB-L3/storage/app/public/' + paint.image} width="300px" />
                 <div className='title'>{paint.name}</div>
                 <div className='author'>{paint.author}</div>
                 {paint.price > 0 ? (

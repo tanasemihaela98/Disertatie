@@ -57,7 +57,7 @@ function OrdersTable() {
         getAllOrders();
     }, []);
 
-    return <div className='productstable'>
+    return <div className='orderstable'>
         <table>
             <thead>
                 <tr>
@@ -75,8 +75,8 @@ function OrdersTable() {
                         order =>
                             <tr key={order.id}>
                                 <td>{order.quantity}</td>
-                                <td>{order.paint.name} </td>
-                                <td>{order.paint.price}</td>
+                                {/* <td>{order.paint.name} </td> */}
+                                {/* <td>{order.paint.price}</td> */}
                                 <td>{order.user.name}</td>
                                 <td>{order.user.email}</td>
 

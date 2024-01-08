@@ -97,7 +97,7 @@ function PaintsTable() {
                                 <tr key={paint.id}>
                                     <td>{paint.id}</td>
                                     <td> 
-                                        <img src={'http://localhost/Disertatie/Practica-2022-ROWEB-L3/storage/app/public/' + paint.image} height="50px" /> 
+                                        <img src={'http://localhost:8080/Disertatie/Practica-2022-ROWEB-L3/storage/app/public/' + paint.image} height="50px" /> 
                                     </td>
                                     <td>{paint.name}</td>
                                     <td>{paint.author}</td>

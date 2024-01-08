@@ -15,12 +15,12 @@ class Cart extends Model
     protected $fillable = [
         'user_id',
         'quantity',
-        'product_id',
+        'paint_id',
     ];
 
     public function paint()
     {
-        return $this->belongsTo(Paint::class, 'product_id');
+        return $this->belongsTo(Paint::class, 'paint_id');
     }
 
     public function user()

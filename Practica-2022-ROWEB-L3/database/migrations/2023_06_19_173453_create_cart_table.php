@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('quantity');
-            $table->string('product_id');
+            $table->string('paint_id');
             $table->string('status')->default('cart');
             $table->timestamps();
         });

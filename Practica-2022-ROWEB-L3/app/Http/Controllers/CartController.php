@@ -13,7 +13,7 @@ class CartController extends ApiController
     public function index(): JsonResponse
     {
         // $carts = Cart::with('paint')->where('user_id',"1")->get();
-        $carts = Cart::with('paint')->where('status',"cart")->get();
+        $carts = Cart::with('paint','paint')->where('status',"cart")->get();
         return $this->sendResponse($carts->toArray());
     }
 
